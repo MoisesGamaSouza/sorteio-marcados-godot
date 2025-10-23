@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvmpr4d7ifnrd"]
+
+[ext_resource type="Script" uid="uid://mlvfkcc0dw33" path="res://Scripts/displaywindow.gd" id="1_htar4"]
+
+[node name="Displaywindow" type="Window"]
+oversampling_override = 1.0
+script = ExtResource("1_htar4")

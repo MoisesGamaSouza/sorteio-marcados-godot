@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://beovv7cpuysgx"]
+
+[ext_resource type="Script" uid="uid://xx5f7s3u7kv5" path="res://Scripts/display_test.gd" id="1_6u0ut"]
+
+[node name="DisplayTest" type="Window"]
+transparent_bg = true
+oversampling_override = 1.0
+transparent = true
+script = ExtResource("1_6u0ut")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 70
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

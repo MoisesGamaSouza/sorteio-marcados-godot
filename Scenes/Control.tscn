@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw407654fa6bf"]
+
+[ext_resource type="Script" uid="uid://bnh207wsks4ua" path="res://Scripts/control.gd" id="1_k7axu"]
+[ext_resource type="Script" uid="uid://vm3b26k5hr2e" path="res://Scripts/controle_de_monitor.gd" id="2_l5htm"]
+[ext_resource type="Script" uid="uid://dprtyjmyqgt8j" path="res://Scripts/importação_de_lista.gd" id="3_cynse"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k7axu")
+
+[node name="Controle de Monitor" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_l5htm")
+
+[node name="Label" type="Label" parent="Controle de Monitor"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 144.0
+offset_bottom = 42.0
+text = "Monitor:"
+
+[node name="OptionButton" type="OptionButton" parent="Controle de Monitor"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 17.0
+offset_right = 136.0
+offset_bottom = 37.0
+item_count = 1
+popup/item_0/text = "Opções de Monitores"
+popup/item_0/id = 0
+
+[node name="Button_Test" type="Button" parent="Controle de Monitor"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 55.0
+offset_right = 95.0
+offset_bottom = 86.0
+text = "Testar"
+
+[node name="Button_Apply" type="Button" parent="Controle de Monitor"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 55.0
+offset_right = 179.0
+offset_bottom = 86.0
+text = "Aplicar"
+
+[node name="Button_Fechar" type="Button" parent="Controle de Monitor"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 55.0
+offset_right = 244.0
+offset_bottom = 86.0
+text = "Fechar"
+
+[node name="Importação de Lista" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cynse")
+
+[node name="Button_Import" type="Button" parent="Importação de Lista"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 219.0
+offset_right = 194.0
+offset_bottom = 250.0
+text = "Importar Lista.Json"
+
+[node name="Button" type="Button" parent="Importação de Lista"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 218.0
+offset_right = 295.0
+offset_bottom = 249.0
+text = "Modelo"
+
+[node name="Label" type="Label" parent="Importação de Lista"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 188.0
+offset_right = 345.0
+offset_bottom = 211.0
+text = "Importar lista de participantes do sorteio"
+
+[node name="FileDialog" type="FileDialog" parent="Importação de Lista"]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="ErrorPopup" type="AcceptDialog" parent="Importação de Lista"]
+
+[node name="ItemList" type="ItemList" parent="Importação de Lista"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 259.0
+offset_right = 409.0
+offset_bottom = 616.0
+
+[connection signal="pressed" from="Controle de Monitor/Button_Test" to="Controle de Monitor" method="_on_button_test_pressed"]
+[connection signal="pressed" from="Controle de Monitor/Button_Apply" to="." method="_on_button_apply_pressed"]
+[connection signal="pressed" from="Controle de Monitor/Button_Fechar" to="." method="_on_button_fechar_pressed"]
+[connection signal="pressed" from="Importação de Lista/Button_Import" to="Importação de Lista" method="_on_button_import_pressed"]
+[connection signal="file_selected" from="Importação de Lista/FileDialog" to="Importação de Lista" method="_on_file_dialog_file_selected"]
