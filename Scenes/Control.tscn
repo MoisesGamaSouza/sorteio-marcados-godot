@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw407654fa6bf"]
+[gd_scene load_steps=5 format=3 uid="uid://cw407654fa6bf"]
 
 [ext_resource type="Script" uid="uid://bnh207wsks4ua" path="res://Scripts/control.gd" id="1_k7axu"]
 [ext_resource type="Script" uid="uid://vm3b26k5hr2e" path="res://Scripts/controle_de_monitor.gd" id="2_l5htm"]
 [ext_resource type="Script" uid="uid://dprtyjmyqgt8j" path="res://Scripts/importação_de_lista.gd" id="3_cynse"]
+[ext_resource type="Script" uid="uid://d2kxyh7tbicst" path="res://Scenes/sorteio.gd" id="4_gemnp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -70,25 +71,25 @@ script = ExtResource("3_cynse")
 [node name="Button_Import" type="Button" parent="Importação de Lista"]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 219.0
+offset_top = 140.0
 offset_right = 194.0
-offset_bottom = 250.0
+offset_bottom = 171.0
 text = "Importar Lista.Json"
 
 [node name="Button" type="Button" parent="Importação de Lista"]
 layout_mode = 0
 offset_left = 209.0
-offset_top = 218.0
+offset_top = 139.0
 offset_right = 295.0
-offset_bottom = 249.0
+offset_bottom = 170.0
 text = "Modelo"
 
 [node name="Label" type="Label" parent="Importação de Lista"]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 188.0
+offset_top = 109.0
 offset_right = 345.0
-offset_bottom = 211.0
+offset_bottom = 132.0
 text = "Importar lista de participantes do sorteio"
 
 [node name="FileDialog" type="FileDialog" parent="Importação de Lista"]
@@ -97,17 +98,50 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.json")
 
-[node name="ErrorPopup" type="AcceptDialog" parent="Importação de Lista"]
-
-[node name="ItemList" type="ItemList" parent="Importação de Lista"]
+[node name="ItemList_Categorias" type="ItemList" parent="Importação de Lista"]
 layout_mode = 0
 offset_left = 28.0
-offset_top = 259.0
-offset_right = 409.0
-offset_bottom = 616.0
+offset_top = 185.0
+offset_right = 297.0
+offset_bottom = 296.0
+select_mode = 2
+
+[node name="ItemList_Itens" type="ItemList" parent="Importação de Lista"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 307.0
+offset_right = 507.0
+offset_bottom = 619.0
+
+[node name="Sorteio" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_gemnp")
+
+[node name="Sortear_Todos" type="Button" parent="Sorteio"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 185.0
+offset_right = 507.0
+offset_bottom = 251.0
+text = "Sortear"
+
+[node name="Sortear_Selecionado" type="Button" parent="Sorteio"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 264.0
+offset_right = 507.0
+offset_bottom = 295.0
+text = "Sortear Selecionado"
+
+[node name="InfoPopup" type="AcceptDialog" parent="."]
 
 [connection signal="pressed" from="Controle de Monitor/Button_Test" to="Controle de Monitor" method="_on_button_test_pressed"]
 [connection signal="pressed" from="Controle de Monitor/Button_Apply" to="." method="_on_button_apply_pressed"]
 [connection signal="pressed" from="Controle de Monitor/Button_Fechar" to="." method="_on_button_fechar_pressed"]
 [connection signal="pressed" from="Importação de Lista/Button_Import" to="Importação de Lista" method="_on_button_import_pressed"]
 [connection signal="file_selected" from="Importação de Lista/FileDialog" to="Importação de Lista" method="_on_file_dialog_file_selected"]
+[connection signal="multi_selected" from="Importação de Lista/ItemList_Categorias" to="Importação de Lista" method="_on_item_list_categorias_multi_selected"]
+[connection signal="pressed" from="Sorteio/Sortear_Todos" to="Sorteio" method="_on_sortear_todos_pressed"]
+[connection signal="pressed" from="Sorteio/Sortear_Selecionado" to="Sorteio" method="_on_sortear_selecionado_pressed"]

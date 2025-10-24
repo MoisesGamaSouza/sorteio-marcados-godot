@@ -1,5 +1,8 @@
 extends Window
 
+func ExibirGanhador(nome: String):
+	$Label.text = nome
+
 func _on_close_request():
 	self.queue_free()
 	
