@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw407654fa6bf"]
+[gd_scene load_steps=6 format=3 uid="uid://cw407654fa6bf"]
 
 [ext_resource type="Script" uid="uid://bnh207wsks4ua" path="res://Scripts/control.gd" id="1_k7axu"]
 [ext_resource type="Script" uid="uid://vm3b26k5hr2e" path="res://Scripts/controle_de_monitor.gd" id="2_l5htm"]
 [ext_resource type="Script" uid="uid://dprtyjmyqgt8j" path="res://Scripts/importação_de_lista.gd" id="3_cynse"]
 [ext_resource type="Script" uid="uid://d2kxyh7tbicst" path="res://Scenes/sorteio.gd" id="4_gemnp"]
+[ext_resource type="Script" uid="uid://b7vrg7snkhtom" path="res://Scenes/modelo_json.gd" id="4_ll70y"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,6 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k7axu")
+
+[node name="Segunda Tela" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Controle de Monitor" type="Control" parent="."]
 anchors_preset = 0
@@ -29,6 +36,7 @@ offset_bottom = 42.0
 text = "Monitor:"
 
 [node name="OptionButton" type="OptionButton" parent="Controle de Monitor"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 104.0
 offset_top = 17.0
@@ -76,14 +84,6 @@ offset_right = 194.0
 offset_bottom = 171.0
 text = "Importar Lista.Json"
 
-[node name="Button" type="Button" parent="Importação de Lista"]
-layout_mode = 0
-offset_left = 209.0
-offset_top = 139.0
-offset_right = 295.0
-offset_bottom = 170.0
-text = "Modelo"
-
 [node name="Label" type="Label" parent="Importação de Lista"]
 layout_mode = 0
 offset_left = 27.0
@@ -113,6 +113,25 @@ offset_top = 307.0
 offset_right = 507.0
 offset_bottom = 619.0
 
+[node name="ModeloJSON" type="Control" parent="Importação de Lista"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_ll70y")
+
+[node name="FileDialog_Save_Modelo" type="FileDialog" parent="Importação de Lista/ModeloJSON"]
+unique_name_in_owner = true
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="Button_Modelo" type="Button" parent="Importação de Lista/ModeloJSON"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 139.0
+offset_right = 295.0
+offset_bottom = 170.0
+text = "Modelo"
+
 [node name="Sorteio" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -139,9 +158,13 @@ text = "Sortear Selecionado"
 
 [connection signal="pressed" from="Controle de Monitor/Button_Test" to="Controle de Monitor" method="_on_button_test_pressed"]
 [connection signal="pressed" from="Controle de Monitor/Button_Apply" to="." method="_on_button_apply_pressed"]
+[connection signal="pressed" from="Controle de Monitor/Button_Apply" to="Controle de Monitor" method="_on_button_apply_pressed"]
 [connection signal="pressed" from="Controle de Monitor/Button_Fechar" to="." method="_on_button_fechar_pressed"]
+[connection signal="pressed" from="Controle de Monitor/Button_Fechar" to="Controle de Monitor" method="_on_button_fechar_pressed"]
 [connection signal="pressed" from="Importação de Lista/Button_Import" to="Importação de Lista" method="_on_button_import_pressed"]
 [connection signal="file_selected" from="Importação de Lista/FileDialog" to="Importação de Lista" method="_on_file_dialog_file_selected"]
 [connection signal="multi_selected" from="Importação de Lista/ItemList_Categorias" to="Importação de Lista" method="_on_item_list_categorias_multi_selected"]
+[connection signal="file_selected" from="Importação de Lista/ModeloJSON/FileDialog_Save_Modelo" to="Importação de Lista/ModeloJSON" method="_on_file_dialog_save_modelo_file_selected"]
+[connection signal="pressed" from="Importação de Lista/ModeloJSON/Button_Modelo" to="Importação de Lista/ModeloJSON" method="_on_button_modelo_pressed"]
 [connection signal="pressed" from="Sorteio/Sortear_Todos" to="Sorteio" method="_on_sortear_todos_pressed"]
 [connection signal="pressed" from="Sorteio/Sortear_Selecionado" to="Sorteio" method="_on_sortear_selecionado_pressed"]
