@@ -1,0 +1,155 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf5hkpn6k0du8"]
+
+[ext_resource type="Script" uid="uid://bnh207wsks4ua" path="res://Scripts/control.gd" id="1_bieqj"]
+[ext_resource type="Texture2D" uid="uid://dv28uuwrwxoeg" path="res://icon.svg" id="2_rw85r"]
+
+[node name="ControlMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bieqj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Esquerda" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 22
+
+[node name="Monitor" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Esquerda"]
+layout_mode = 2
+
+[node name="Opção_Monitor" type="HFlowContainer" parent="MarginContainer/HBoxContainer/Esquerda/Monitor"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Esquerda/Monitor/Opção_Monitor"]
+layout_mode = 2
+text = "Monitores: "
+
+[node name="OptionButton-Monitores" type="OptionButton" parent="MarginContainer/HBoxContainer/Esquerda/Monitor/Opção_Monitor"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Botões" type="HFlowContainer" parent="MarginContainer/HBoxContainer/Esquerda/Monitor"]
+layout_mode = 2
+
+[node name="Button_Test" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões"]
+layout_mode = 2
+text = "Testar"
+
+[node name="Button_Apply" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Aplicar"
+
+[node name="Button_Close" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões"]
+layout_mode = 2
+text = "Fechar"
+
+[node name="Importação_Modelo" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Esquerda"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo"]
+layout_mode = 2
+text = "Importar lista com nome dos participantes"
+
+[node name="VBoxContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo"]
+layout_mode = 2
+
+[node name="Button_Import" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Importar .JSON"
+
+[node name="Button_Model" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo/VBoxContainer"]
+layout_mode = 2
+text = "Modelo"
+
+[node name="Listas e Sorteios" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Esquerda"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios"]
+layout_mode = 2
+
+[node name="ItemList_Categorias" type="ItemList" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+select_mode = 2
+
+[node name="Botões_Sorteio" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button_Sortear" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sortear"
+
+[node name="Button_Apresentar_Selecionado" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio"]
+layout_mode = 2
+text = "Apresentar Selecionado"
+
+[node name="ItemList_Itens" type="ItemList" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Escrever e Sortear" type="HFlowContainer" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/Escrever e Sortear"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Escreva o nome de quem quer apresentar"
+
+[node name="Button_Apresentar" type="Button" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/Escrever e Sortear"]
+layout_mode = 2
+text = "Apresentar"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_rw85r")
+
+[node name="FileDialog_Import" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="FileDialog_Save" type="FileDialog" parent="."]
+unique_name_in_owner = true
+access = 2
+
+[node name="AcceptDialog_PopUp" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões/Button_Test" to="." method="_on_button_test_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões/Button_Apply" to="." method="_on_button_apply_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Monitor/Botões/Button_Close" to="." method="_on_button_close_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo/VBoxContainer/Button_Import" to="." method="_on_button_import_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Importação_Modelo/VBoxContainer/Button_Model" to="." method="_on_button_model_pressed"]
+[connection signal="multi_selected" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/ItemList_Categorias" to="." method="_on_item_list_categorias_multi_selected"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio/Button_Sortear" to="." method="_on_button_sortear_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio/Button_Apresentar_Selecionado" to="." method="_on_button_apresentar_selecionado_pressed"]
+[connection signal="file_selected" from="FileDialog_Import" to="." method="_on_file_dialog_import_file_selected"]
+[connection signal="file_selected" from="FileDialog_Save" to="." method="_on_file_dialog_save_file_selected"]

@@ -8,11 +8,8 @@ position = Vector2i(0, 36)
 script = ExtResource("1_htar4")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 144.0
+offset_bottom = 30.0
+text = "Janela Secundaria"
