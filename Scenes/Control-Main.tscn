@@ -116,6 +116,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/Escrever e Sortear"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Escreva o nome de quem quer apresentar"
@@ -151,5 +152,6 @@ unique_name_in_owner = true
 [connection signal="multi_selected" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/ItemList_Categorias" to="." method="_on_item_list_categorias_multi_selected"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio/Button_Sortear" to="." method="_on_button_sortear_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/HBoxContainer/Botões_Sorteio/Button_Apresentar_Selecionado" to="." method="_on_button_apresentar_selecionado_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Esquerda/Listas e Sorteios/Escrever e Sortear/Button_Apresentar" to="." method="_on_button_apresentar_pressed"]
 [connection signal="file_selected" from="FileDialog_Import" to="." method="_on_file_dialog_import_file_selected"]
 [connection signal="file_selected" from="FileDialog_Save" to="." method="_on_file_dialog_save_file_selected"]

@@ -1,7 +1,9 @@
 extends Window
 
+@onready var label: Label = %Label
+
 func ExibirGanhador(nome: String):
-	$Label.text = nome
+	label.text = nome
 
 func _on_close_request():
 	self.queue_free()
