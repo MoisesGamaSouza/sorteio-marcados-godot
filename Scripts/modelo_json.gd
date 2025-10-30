@@ -1,4 +1,4 @@
-extends Control
+extends Container
 
 @onready var SAVE_WINDOW = %FileDialog_Save_Modelo
 

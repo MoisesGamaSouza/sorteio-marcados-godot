@@ -1,4 +1,4 @@
-extends Control
+extends VBoxContainer
 
 @onready var om = %OptionButton #Opções de Monitores
 @onready var st = %"Segunda Tela"
